@@ -11,6 +11,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 const artistReducer = (state = [], action) => {
+    artists: []
     return state;
 }
 
