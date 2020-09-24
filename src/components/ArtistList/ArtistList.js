@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import ArtistListItem from '../ArtistListItem/ArtistListItem';
+import {connect} from 'react-redux';
 
 class ArtistList extends Component {
     createArtistList() {
@@ -26,5 +27,7 @@ class ArtistList extends Component {
         )
     }
 }
-
-export default ArtistList;
+const mapStateToProps = (reduxState) => {
+    artistList: reduxState.artists
+}
+export default connect(mapStateToProps)(ArtistList);

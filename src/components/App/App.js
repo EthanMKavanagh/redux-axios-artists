@@ -5,6 +5,8 @@ import './App.css';
 import axios from 'axios';
 import ArtistList from './../ArtistList/ArtistList.js';
 import {connect} from 'react-redux';
+import {Route, Link, HashRouter as Router} from 'react-router-dom';
+import AddArtist from '../AddArtist/AddArtist';
 
 class App extends Component {
   // DOM is ready
@@ -28,18 +30,43 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Famous Artists</h1>
-        </header>
-        <br/>
-        <ArtistList refreshArtists={this.refreshArtists} artistList={this.props.artists} />
-      </div>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Famous Artists</h1>
+
+              <nav>
+              <main>
+                <div>
+                  <span><Link to="/addArtist">Add Artist</Link></span>
+                  <span><Link to="/allArtists">All Artists</Link></span>
+                </div>
+              </main>
+            </nav>
+
+          </header>
+          <br/>
+
+
+          <main>
+            <Route exact path = '/allArtists'>
+              <ArtistList
+                refreshArtists={this.refreshArtists}
+                artistList={this.props.artists}
+              />
+            </Route>
+
+            <Route exact path = '/addArtist'>
+              <AddArtist />
+            </Route>
+          </main>
+        </div>
+      </Router>
     );
   }
 }
 
-const mapStateToProp = (reduxState) => {
+const mapStateToProp = (reduxState) => ({
   artists: reduxState.artists
-}
+});
 export default connect(mapStateToProp)(App);
