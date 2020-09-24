@@ -27,7 +27,5 @@ class ArtistList extends Component {
         )
     }
 }
-const mapStateToProps = (reduxState) => {
-    artistList: reduxState.artists
-}
-export default connect(mapStateToProps)(ArtistList);
+
+export default connect()(ArtistList);

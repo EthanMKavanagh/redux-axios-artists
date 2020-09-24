@@ -12,6 +12,10 @@ import { Provider } from 'react-redux';
 
 
 const artistReducer = (state = [], action) => {
+    if (action.type === 'POST_ARTIST') {
+        return [...state, action.payload];
+    }
+
     return state;
 }
 

@@ -57,7 +57,9 @@ class App extends Component {
             </Route>
 
             <Route exact path = '/addArtist'>
-              <AddArtist />
+              <AddArtist 
+                refreshArtists={this.refreshArtists}
+              />
             </Route>
           </main>
         </div>

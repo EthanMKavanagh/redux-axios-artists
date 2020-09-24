@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 class ArtistListItem extends Component {
     deleteArtist = () => {
@@ -22,4 +24,4 @@ class ArtistListItem extends Component {
     }
 }
 
-export default ArtistListItem;
+export default connect()(withRouter(ArtistListItem));
